@@ -3,7 +3,18 @@ import React from 'react';
 const AddTodo = () => {
 
 
-    const handleAddTodo = ()=>{
+    const handleAddTodo = (event)=>{
+      event.preventDefault();
+      const form = event.target;
+      const title = form.title.value;
+      const description = form.description.value;
+      
+      const todo = {
+        title,
+        description
+      }
+
+      console.log(todo)
 
     }
 
@@ -19,8 +30,8 @@ const AddTodo = () => {
             </label>
             <input
               type="text"
-              placeholder="email"
-              name="email"
+              placeholder="Title"
+              name="title"
               className="input input-bordered"
               required
             />
@@ -29,7 +40,7 @@ const AddTodo = () => {
             <label className="label">
               <span className="label-text">Description</span>
             </label>
-            <textarea className="textarea textarea-bordered" placeholder="Bio"></textarea>
+            <textarea className="textarea textarea-bordered" placeholder="Description" name='description'></textarea>
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary">Add</button>
