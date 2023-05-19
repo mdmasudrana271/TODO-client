@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
 
 const AddTodo = () => {
+
+  const {user} = useContext(AuthContext)
 
 
     const handleAddTodo = (event)=>{
@@ -11,10 +14,25 @@ const AddTodo = () => {
       
       const todo = {
         title,
-        description
+        description,
+        email:user?.email
       }
 
       console.log(todo)
+
+
+      fetch("http://localhost:5000/add-todo",{
+        method:"POST",
+        headers:{
+          "content-type":"application/json"
+        },
+        body: JSON.stringify(todo)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        form.reset()
+      })
 
     }
 

@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext} from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Header = () => {
 
-    const [search,setSearch] = useState('')
+    const {logOut, user} = useContext(AuthContext)
 
-    const handleSearchText = (event)=>{
-        event.preventDefault();
-        const form = event.target.search.value;
-        setSearch(form)
-        
-        
+
+    const handleLogout = ()=>{
+      logOut()
     }
 
   return (
@@ -20,15 +18,6 @@ const Header = () => {
           <Link to='/' className="btn btn-ghost normal-case text-xl">TODO</Link>
         </div>
         <div className="flex-none gap-2">
-          <form onSubmit={handleSearchText}>
-            <input
-              type="text"
-              placeholder="Search"
-              name="search"
-              className="input input-bordered"
-              
-            />
-          </form>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
@@ -51,16 +40,18 @@ const Header = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
+                <Link to="/" className="justify-between">
+                  My TODO
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/add-todo">ADD TODO</Link>
               </li>
-              <li>
-                <a>Logout</a>
+              <li>{
+                
+                user && user.uid ? <button onClick={handleLogout}>Logout</button> :  <button><Link to="/login">Login</Link></button>
+
+                }
               </li>
             </ul>
           </div>

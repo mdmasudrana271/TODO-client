@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth'
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from 'firebase/auth'
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
@@ -25,7 +25,6 @@ const AuthProvider = ({children})=>{
     }
   
     const logOut = ()=>{
-      localStorage.removeItem('photography')
       signOut(auth)
       .then(()=>{
         console.log('log out success')
@@ -34,6 +33,11 @@ const AuthProvider = ({children})=>{
       .catch(error => {
         console.log(error.message)
       })
+    }
+
+    const updateUserProfile =(profile)=>{
+      setLoading(true)
+     return updateProfile(auth.currentUser, profile)
     }
 
 
@@ -49,7 +53,7 @@ const AuthProvider = ({children})=>{
 
 
 
-    const authInfo = {createUser, signIn, logOut, loading,error, setError}
+    const authInfo = {createUser, signIn, logOut, loading,error, setError,user, updateUserProfile}
 
     return (
         <AuthContext.Provider value={authInfo}>
