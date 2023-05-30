@@ -45,6 +45,11 @@ const Header = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/trash" className="justify-between">
+                  Trash
+                </Link>
+              </li>
+              <li>
                 <Link to="/add-todo">ADD TODO</Link>
               </li>
               <li>{

@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import Signup from "../components/Signup/Signup";
 import Main from "../Layout/Main";
 import PrivateRoute from "./PrivateRoute";
+import Trash from "../components/Trash/Trash";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -17,7 +18,11 @@ const router = createBrowserRouter([{
         },
         {
             path:'/add-todo',
-            element:<AddTodo></AddTodo>
+            element:<PrivateRoute><AddTodo></AddTodo></PrivateRoute>
+        },
+        {
+            path:'/trash',
+            element:<PrivateRoute><Trash></Trash></PrivateRoute>
         },
 
         {

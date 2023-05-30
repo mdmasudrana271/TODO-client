@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoCard = ({todo}) => {
+const TodoCard = ({ todo }) => {
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl border">
