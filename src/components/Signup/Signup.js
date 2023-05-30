@@ -2,10 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Signup = () => {
   const { createUser, updateUserProfile, error, setError, user } =
     useContext(AuthContext);
+
+  const [email,setEmail] = useState('')
+  console.log(email)
+  const [token] = useToken(email)
 
   // use location to redirect
 
@@ -25,6 +30,10 @@ const Signup = () => {
       setPasswordType("password");
     }
   };
+
+  if (token) {
+    navigate("/");
+  }
 
 
   const handleOnSubmit = (event) => {
@@ -61,8 +70,8 @@ const Signup = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        setEmail(user.email);
         console.log(user);
-        // setUserLoginEmail(user.email);
         const userInfo = {
           displayName: createdUser.name,
         };
@@ -89,7 +98,8 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data)
+        
       });
   };
 

@@ -40,6 +40,9 @@ const Header = () => {
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
+                <Link to="/add-todo">ADD TODO</Link>
+              </li>
+              <li>
                 <Link to="/" className="justify-between">
                   My TODO
                 </Link>
@@ -48,9 +51,6 @@ const Header = () => {
                 <Link to="/trash" className="justify-between">
                   Trash
                 </Link>
-              </li>
-              <li>
-                <Link to="/add-todo">ADD TODO</Link>
               </li>
               <li>{
                 

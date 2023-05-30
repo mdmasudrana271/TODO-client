@@ -2,11 +2,16 @@ import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const { signIn, error, setError } = useContext(AuthContext);
 
   const [passwordType, setPasswordType] = useState("password");
+
+  const [email,setEmail] = useState('')
+  console.log(email)
+  const [token] = useToken(email)
 
   const handlePasswordType = () => {
     if (passwordType === "password") {
@@ -23,6 +28,10 @@ const Login = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
+  if(token){
+    navigate(from, {replace: true})
+  }
+
 
   // collect data from form
 
@@ -35,11 +44,10 @@ const Login = () => {
     // login with email and password
 
     signIn(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        form.reset();
-        navigate(from, { replace: true });
+      .then((data) => {
+        const user = data.user;
+        console.log(user.email);
+        setEmail(user.email)
         setError("");
       })
       .catch((error) => {

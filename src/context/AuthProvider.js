@@ -28,7 +28,7 @@ const AuthProvider = ({children})=>{
       signOut(auth)
       .then(()=>{
         console.log('log out success')
-        localStorage.removeItem('bookAccessToken')
+        localStorage.removeItem('todoAppAccessToken')
       })
       .catch(error => {
         console.log(error.message)
