@@ -89,7 +89,7 @@ const Signup = () => {
 
   const saveUser = (createdUser) => {
     console.log(createdUser);
-    fetch("http://localhost:5000/users", {
+    fetch("https://todo-app-server-side-phi.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

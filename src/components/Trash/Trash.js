@@ -8,7 +8,7 @@ const Trash = () => {
   const { user } = useContext(AuthContext);
   
   useEffect(()=>{
-    fetch(`http://localhost:5000/trash?email=${user.email}`)
+    fetch(`https://todo-app-server-side-phi.vercel.app/trash?email=${user.email}`)
     .then((res) => res.json())
     .then((data) => {
       setTrash(data);

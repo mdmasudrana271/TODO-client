@@ -7,7 +7,7 @@ const TrashCard = ({ todo }) => {
     const navigate = useNavigate()
 
     const handleUndoTodo =()=>{
-        fetch(`http://localhost:5000/undo-todo/${todo._id}`,{
+        fetch(`https://todo-app-server-side-phi.vercel.app/undo-todo/${todo._id}`,{
             method: 'DELETE',
             headers:{
                 'content-type': "application/json"

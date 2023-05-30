@@ -28,7 +28,7 @@ const router = createBrowserRouter([{
         {
             path: '/details/:id',
             element: <PrivateRoute><Description></Description></PrivateRoute>,
-            loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`)
+            loader:({params})=> fetch(`https://todo-app-server-side-phi.vercel.app/details/${params.id}`)
 
         },
 

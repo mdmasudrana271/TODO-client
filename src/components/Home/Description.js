@@ -14,7 +14,7 @@ const Description = () => {
   const handleDelete = () => {
     alert("Are you sure you wnat to delete this item?");
 
-    fetch(`http://localhost:5000/delete/${data._id}`, {
+    fetch(`https://todo-app-server-side-phi.vercel.app/delete/${data._id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -30,7 +30,7 @@ const Description = () => {
   };
 
   const handleComplete = () => {
-    fetch(`http://localhost:5000/update-status?id=${data._id}`, {
+    fetch(`https://todo-app-server-side-phi.vercel.app/update-status?id=${data._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json", 

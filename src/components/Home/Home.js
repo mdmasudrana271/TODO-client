@@ -12,7 +12,7 @@ const Home = () => {
     event.preventDefault();
     const form = event.target;
     const search = form.search.value;
-    fetch(`http://localhost:5000/search?search=${search}`)
+    fetch(`https://todo-app-server-side-phi.vercel.app/search?search=${search}`)
     .then(res=> res.json())
     .then(data=> {
       setTodos(data)
@@ -23,7 +23,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/all-todo?email=${user.email}`,{
+    fetch(`https://todo-app-server-side-phi.vercel.app/all-todo?email=${user.email}`,{
       headers: {
         'content-type': 'application/json',
         authorization: `Bearer ${localStorage.getItem("todoAppAccessToken")}`,

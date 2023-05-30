@@ -23,7 +23,7 @@ const AddTodo = () => {
 
     console.log(todo);
 
-    fetch("http://localhost:5000/add-todo", {
+    fetch("https://todo-app-server-side-phi.vercel.app/add-todo", {
       method: "POST",
       headers: {
         "content-type": "application/json",
