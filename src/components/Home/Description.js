@@ -7,8 +7,6 @@ import { toast } from "react-hot-toast";
 const Description = () => {
   const data = useLoaderData();
 
-  console.log(data);
-
   const navigate = useNavigate();
 
   const handleDelete = () => {

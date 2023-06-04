@@ -32,7 +32,6 @@ const AddTodo = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         toast.success('Todo Added Successfully')
         form.reset();
         navigate("/");
