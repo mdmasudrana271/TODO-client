@@ -16,11 +16,15 @@ const Trash = () => {
   },[user.email])
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-10 my-20">
-      {trash?.map((todo) => (
-        <TrashCard key={todo._id} todo={todo}></TrashCard>
-      ))}
-    </div>
+    <section>
+      {
+        trash.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-10 my-20">
+        {trash?.map((todo) => (
+          <TrashCard key={todo._id} todo={todo}></TrashCard>
+        ))}
+      </div> : <p className="text-center text-2xl font-bold mt-60">Trash is empty</p>
+      }
+    </section>
   );
 };
 
