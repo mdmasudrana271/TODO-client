@@ -1,15 +1,13 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Header = () => {
+  const { logOut, user } = useContext(AuthContext);
 
-    const {logOut, user} = useContext(AuthContext)
-
-
-    const handleLogout = ()=>{
-      logOut()
-    }
+  const handleLogout = () => {
+    logOut();
+  };
 
   return (
     <section>
@@ -53,7 +51,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>{
-                
+
                 user && user.uid ? <button onClick={handleLogout}>Logout</button> :  <button><Link to="/login">Login</Link></button>
 
                 }
