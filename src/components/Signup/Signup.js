@@ -150,12 +150,12 @@ const Signup = () => {
             {passwordType === "password" ? (
               <FaEye
                 onClick={handlePasswordType}
-                className="relative bottom-7 left-72 cursor-pointer"
+                className="relative bottom-7 left-64 md:left-40 lg:left-72 cursor-pointer"
               ></FaEye>
             ) : (
               <FaEyeSlash
                 onClick={handlePasswordType}
-                className="relative bottom-7 left-72 cursor-pointer"
+                className="relative bottom-7 left-64  md:left-40 lg:left-72 cursor-pointer"
               ></FaEyeSlash>
             )}
           </div>
